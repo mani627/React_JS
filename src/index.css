@@ -1,0 +1,94 @@
+*,html {
+    margin: 0;
+    padding: 0;
+   font-size: 19px;
+   font-family:Tahoma;
+color: #434343;
+   /* background-color: #90dcd0; */
+
+ /* width: 100%; */
+ scroll-behavior: smooth;
+ 
+ }
+ 
+
+ .lds-hourglass {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-hourglass:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 8px;
+    box-sizing: border-box;
+    border: 32px solid #90dcd0;
+    border-color: #90dcd0 transparent #90dcd0 transparent;
+    animation: lds-hourglass 1.2s infinite;
+  }
+  @keyframes lds-hourglass {
+    0% {
+
+      transform: rotate(0);
+      animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+      transform: rotate(900deg);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+      transform: rotate(1800deg);
+    }
+  }
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #A9A9A9  ;
+    opacity: 0.9; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: red;
+  }
+
+  /* loader for all buttons */
+  .loader {
+    width: 15px;
+    height: 15px;
+    border: 2px solid transparent;
+    border-bottom-color: #FFF;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+ 
+    input[type=text]:focus, input[type=password]:focus,input[type=email]:focus{
+      border-bottom: 1px solid 	#383838;
+    }
+
+    ul {
+      list-style-type: none;
+  }
+
+  input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        display: none;
+      }
+  /* font-family: Phantomsans, sans-serif; */

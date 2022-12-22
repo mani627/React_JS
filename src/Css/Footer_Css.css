@@ -1,0 +1,85 @@
+.reach_footer_dash{
+    width: 119%;
+    height: 40vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+.reach_footer_admin{
+    width: 100%;
+    height: 40vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.reach_footer_logo{
+    width: 100%;
+    /* height: 10%; */
+
+    text-align: center;
+    margin-top: 2%;
+}
+.reach_footer_logo>p{
+    font-size: 1.2rem;
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    color: 		#A9A9A9;
+}
+.reach_footer_logo>div>i{
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: 1.8rem;
+    color: 			#A0A0A0;
+}
+
+.reach_footer_copyright{
+    width: 100%;
+    height: 100%;
+   
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.reach_footer_copyright>p{
+    font-size: 0.9rem;
+    position: relative;
+    top:11%;
+    color: 			#A0A0A0;
+}
+.reach_footer_copyright>div{
+    font-size: 0.7rem;
+    color: 				#707070;
+  
+}
+
+@media screen and (max-width: 768px) {
+
+.reach_footer_dash {
+    width: 108%;
+    height: 40vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+.reach_footer_admin {
+    width: 100%;
+    height: 40vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+.reach_footer_logo>div>i{
+
+    font-size: 1.4rem;
+  
+}
+.reach_footer_logo{
+
+    margin-top: 6%;
+}
+}

@@ -1,0 +1,278 @@
+.popup_bg{
+  background-color: rgba(173, 171, 171, 0.61);
+  backdrop-filter: blur(7px)  ;
+  
+  position:fixed;top:0;bottom:0;left:0;right:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .popup_inner_login{
+    height: 41%;
+    width: 35%;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+transform: translateY(180%);
+    flex-direction: column;
+    align-items: center;
+    /* transition: all 0.4s; */
+  }
+
+  .popup_inner_login2{
+ 
+transform: translateY(0%);
+transition: all 0.4s;
+  }
+
+  .popup_title{
+    font-family:Tahoma;
+    font-size: 1.4rem;
+    background: linear-gradient(to right,#16A085, #F4D03F );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+   position: relative;
+   top:8%
+  }
+  .popuplogininput{
+    margin:auto 0px;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #4c4c4a;
+    width: 100%;
+    margin-top: 20%;
+    margin-bottom: 1%;
+    padding-bottom: 2%;
+    padding-left: 1%;
+    font-size: 0.6rem;
+  }
+  .popuplogininput2{
+    margin:auto 0px;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #4c4c4a;
+    width: 7  0%;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    padding-bottom: 2%;
+    padding-left: 1%;
+    font-size: 0.6rem;
+    background-color: inherit;
+  }
+
+  .popuplogininput_icondiv{
+   margin-top: 1%;
+    width: 65%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+  }
+  .popuplogininput_icondiv p{
+    margin-left: 2%;
+    font-size: 0.7rem;
+    font-weight: 100;
+    color: #A5885D;
+  }
+  .extrapopup_div_login{
+    height: 58%;
+    width:100%;
+    background-color: white;
+    margin-top: 5%;
+    border-radius: 8px;
+    visibility:hidden;
+    transition: all 0.3s;
+  }
+  #sendotp,#rechange_password{
+    display: none;
+  }
+  .enterotp_div{
+    height: 43%;
+    width: 100%;
+    background-color: 	#ebdbb7;
+    
+    margin-top:14%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  transform: translateY(0%);
+  transition: visibility 0.1s;
+  flex-direction: column;
+ 
+  }
+
+  .enterotp_div_from_top{
+    height: 100%;
+    width: 100%;
+
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition:all 0.1s;
+  flex-direction: column;
+ 
+
+  }
+  
+
+ 
+  #sendotp:checked ~  .popup_inner_login{
+height: 80%;
+transition: all 0.4s;
+  }
+  #sendotp:checked~ .popup_inner_login>.enterotp_div{
+    visibility: visible;
+    transition:all 0.2s;
+  }
+
+  #sendotp:checked~ .popup_inner_login>.enterotp_div>.enterotp_div_from_top{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0%);
+   
+    transition:transform 0.1s,opacity 0.2s;
+  }
+ 
+
+
+ 
+  .popup_close_login{
+    width: 100%;
+    text-align: end;
+   
+    margin-right: 7%;
+    margin-bottom: 2%;
+  }
+
+ 
+.close_popup_main{
+  position: absolute;
+top:2%;
+  right:3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
+cursor:pointer;
+
+
+}
+.close_popup_main:hover{
+  background-color: rgb(238, 236, 236);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title_timer_div{
+  width: 100%;
+ margin-top: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.popup_otp_title{
+  font-weight: 100;
+  color: #5c5c58;
+  
+  align-self: center;
+}
+.timeout{
+  
+  color: #A5885D;
+  font-size: 0.5rem;
+  /* align-self: flex-start; */
+  left: 17px;
+  position: absolute;
+
+}
+
+.rechange_password_div{
+  height: 100%;
+  width:100%;
+  position: absolute;
+  background-color: #ffffff;
+z-index: -1;
+  border-radius: 8px;
+  display: flex;
+transform: translateX(80%);
+  flex-direction: column;
+  align-items: center;
+ opacity: 0;
+}
+#rechange_password:checked ~ .popup_inner_login>.rechange_password_div{
+  transform: translateX(0%);
+opacity: 1;
+transition: transform 0.2s,opacity 0.2s;
+z-index: 1;
+  /* display:flex; */
+}
+
+/* #rechange_password:checked~ .popup_inner_login>.enterotp_div{
+  visibility: visible;
+  transition:all 0.2s;
+} */
+
+
+  /* css mobile responsive */
+  @media screen and (max-width: 768px) {
+  .popup_inner_login{
+    height: 37vh;
+    width: 80%;
+   
+  }
+  #sendotp:checked ~  .popup_inner_login{
+    height: 60%;
+    transition: all 0.4s;
+      }
+
+      .enterotp_div{
+        height: 40vh;
+      }
+
+      .popuplogininput2{
+        position: relative;
+        top:40%;
+       
+      }
+
+      .popuplogininput_icondiv p {
+       
+        font-size: 0.5rem;
+       
+    }
+    .title_timer_div{
+   margin-top: 2%;
+    }
+    .popup_otp_title {
+      font-size: 0.8rem;
+  }
+  .timeout_font{
+    font-size: 0.8rem;
+  }
+  .close_popup_main {
+   
+    top: 2%;
+    right: 2%;
+    font-size: 0.8rem;
+
+}
+.close_popup_main:hover{
+  background-color: rgb(238, 236, 236);
+}
+.popup_title {
+ 
+  font-size: 1.2rem;
+  
+}
+}

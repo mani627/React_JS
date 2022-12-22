@@ -1,0 +1,259 @@
+#bg_image{
+    background-image:  url("../Images/Login_bgimg.png");
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 100%; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#outer{
+    width: 100vw;
+   height: 100vh;
+}
+
+#innerContainer{
+    height: 68%;
+    width:60%;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5%;
+}
+   
+#innerContainer_left_Lo{
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+    border-radius: 20px 0px 0px 20px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  
+}
+
+/* topleft, topright btright bt left */
+/*  linear-gradient(#eb01a5, #d13531) */
+#innerContainer_right_Lo{
+
+}
+
+
+ 
+
+/* CSS */
+.btn {
+    align-items: center;
+    background-color: #16A085;
+    border: 0;
+    border-radius: 8px;
+   
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 0.9rem;
+    justify-content: center;
+    line-height: 0.1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 19px 24px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-top: 10%;
+    font-weight: 100;
+    transition: all 0.1s;
+}
+
+.btn:active,
+.btn:hover {
+    transform: scale(0.85);
+    
+}
+
+.title{
+     font-size: 3rem;
+    font-weight: 200;
+    position: relative;
+    top:-30%;
+    background: linear-gradient(to right,#16A085, #F4D03F );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Phantomsans, sans-serif;
+    opacity: 0;
+}
+.drop{
+    opacity: 1;
+    top:-7%; 
+    transition:  opacity 0.1s,top 0.2s;
+}
+
+.mystyle1_Lo{
+    background-image:  url("../Images/Login_right.jpg");
+ 
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    background-position:center;
+    width: 58%;
+    height: 100%;
+    border-radius:0px 8px 8px 0px; 
+  
+}
+
+.mystyle2_Lo{
+    background-image:  url("../Images/Login_right2.jpg");
+ 
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    background-position:center;
+    width: 58%;
+    height: 100%;
+    border-radius: 0px 8px 8px 0px; 
+    
+}
+
+.mystyle3_Lo{
+    background-image:  url("../Images/Login_right3.jpg");
+ 
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    background-position:center;
+    width: 58%;
+    height: 100%;
+    border-radius: 0px 8px 8px 0px; 
+
+}
+
+.phone, .password{
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #4c4c4a;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-bottom: 2%;
+    padding-left: 12%;
+    font-size: 0.6rem;
+}
+/* .first_input{
+    width: 75%;
+    display: flex;
+    flex-direction: row;  
+} */
+
+.icons{
+    right: 8%;
+    position: relative;
+    top:25%;
+    font-size: 0.8em;
+}
+
+.bottom_container{
+
+    width:60%;
+    margin-top: 0%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
+.btnn {
+   
+    border-radius: 10px;
+    border: none;
+    background-color: red;
+    padding: 14px 28px;
+    font-size: 0.8rem;
+   font-weight: 200;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .btnn:hover {background: #eee}
+
+.register {color:#8B4513;}
+
+.normal_btn{
+ background-color: inherit;
+    outline: none;
+    border: 1px solid transparent;
+    font-size: 0.7rem;
+    position: relative;
+    top:9%;
+    cursor: pointer; 
+    color: 	#686868;
+}
+.normal_btn:hover{
+    
+    border-bottom: 1px solid grey;
+}
+
+@media screen and (max-width: 768px) {
+    #outer{
+        width: 100vw;
+       height: 100vh;
+       align-items: center;
+       justify-content: center;
+    }
+
+    #innerContainer{
+        height: 71%;
+        width: 83%;
+        background-color: white;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+        align-items: center;
+        justify-content: center;
+    }
+    #innerContainer_right_Lo{
+display: none;
+    }
+   
+    
+    #innerContainer_left_Lo {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        border-radius: 20px 0px 0px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .btn {
+
+        position: relative;
+        top: 7%;
+    }
+    .bottom_container{
+        width: 80%;
+    margin-top: 0%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  
+    position: absolute;
+    bottom: 7%;
+       }
+      
+  }
