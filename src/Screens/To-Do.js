@@ -95,7 +95,7 @@ myPromise.then(()=>{
   document.querySelectorAll(".to_do_list_single").forEach((e,i)=>{
   
     e.style.marginRight="0px"
-  })
+  }) 
 
  
   setTimeout(()=>{

@@ -353,7 +353,7 @@ transition: transform 0.5s
 }
 .contact_blur_div{
     /*  background: rgba(255, 255, 255, 0.2); */
-    height: 90%;
+    height: 97%;
     width:80%;
     background-color:yellow;
     background: rgba(255, 255, 255, 0.2);
@@ -463,7 +463,7 @@ transition: transform 0.5s
     background-color: white;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 0px;
-    padding: 3%;
+    padding: 5%;
     border-bottom-left-radius: 10px;
 }
 /* .about_me_content {

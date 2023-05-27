@@ -1,43 +1,45 @@
 
-import { faSearch, faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import { DatePicker, Space } from 'antd';
+import { DatePicker } from 'antd';
 import 'antd/dist/antd.css';
-import moment from 'moment';
-import React, { useEffect, useState } from 'react';
+import emailjs from "emailjs-com";
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../App.css';
+import Footer from "../Components/Footer";
 import Header from '../Components/Header';
-import Input from '../Components/Input';
+import InputPort from "../Components/InputPort";
+import Popup from "../Components/Popup";
+import Toasting from '../Components/Toast';
 import '../Css/Dash_Css.css';
 import "../Css/Nav_Css.css";
+import "../Css/portfolio.css";
 import '../index.css';
-import Footer from "../Components/Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { persistor } from '../index'
-import { store_user_details, clear_and_logout } from "../Redux/Action/Actions_Hotel";
-import "../Css/portfolio.css"
-import InputPort from "../Components/InputPort";
-import TextArea from "antd/lib/input/TextArea";
-import emailjs from "emailjs-com";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Toasting from '../Components/Toast';
-import Popup from "../Components/Popup";
 import { USER_LOGOUT } from "../Redux/Action/To_Do";
 
 const { RangePicker } = DatePicker;
 function PortFolio() {
+
+
+
+
+  let url = new URL(window.location.href)
+  url.searchParams.set('name', "mani")
+
+  console.log(url.toString());
+
   const dispatch = useDispatch();
   let redux_state = useSelector((state) => state);
   // let loginDetails = redux_state.sample.login_details;
-  
-  const [contact,setcontact]=useState({
-    name:"",
-    email:"",
-    mssg:""
+
+  const [contact, setcontact] = useState({
+    name: "",
+    email: "",
+    mssg: ""
   })
-  const[close_popup,setclose_popup]=useState(false)
+  const [close_popup, setclose_popup] = useState(false)
 
 
 
@@ -94,7 +96,7 @@ function PortFolio() {
 
   tab.forEach((t, i) => {
 
-    
+
     t.addEventListener("click", () => {
       // console.log(i)
       tab.forEach((tt) => {
@@ -114,19 +116,19 @@ function PortFolio() {
       if (i === 3) {
         setTimeout(() => {
           let boom = document.getElementsByClassName("boom");
-        
+
 
 
           boom[0].style.transition = "top 0.2s ease-in-out"
           boom[0].style.top = "-10px"
 
-       
+
 
         }, 500)
 
 
         setTimeout(() => {
-        
+
           let boom2 = document.getElementsByClassName("boom2")
 
 
@@ -137,16 +139,16 @@ function PortFolio() {
 
         setTimeout(() => {
           let boom = document.getElementsByClassName("boom")
-       
+
 
           boom[0].style.transition = "top 0.2s ease-in-out"
           boom[0].style.top = "0px"
-        
+
         }, 800)
 
 
         setTimeout(() => {
-         
+
           let boom2 = document.getElementsByClassName("boom2")
 
           boom2[0].style.transition = "top 0.2s ease-in-out"
@@ -159,49 +161,55 @@ function PortFolio() {
     })
   })
 
+  // const [mssg,setmssg]=useState("")
+  const submit = (e) => {
 
-const submit=(e)=>{
+    let email_reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    let result_email = email_reg.test(document.getElementsByName("user_email")[0].value);
 
-  let email_reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  let result_email = email_reg.test(document.getElementsByName("user_email")[0].value);
+    console.log();
+    e.preventDefault()
+    if (document.getElementsByName("message")[0].value === "") {
+      Toasting("Enter Name", "error")
+      return false
+    } else if (!result_email) {
+      Toasting("Enter Valid Email", "error")
+      return false
+    } else if (document.getElementsByName("message")[0].value === "") {
 
-console.log();
-  e.preventDefault()
-  if(document.getElementsByName("name")[0].value===""){
-    Toasting("Enter Name", "error")
-    return false
-  }else if(!result_email){
-    Toasting("Enter Valid Email", "error")
-    return false
-  }else if(document.getElementsByName("message")[0].value===""){
+      Toasting("Enter Message", "error")
+      return false
+    } else {
+      emailjs.sendForm("service_fkikud8", "template_upt5x1s", e.target, "PePpFs6LL7DEydqGY").then((res) => {
+        console.log(res)
 
-    Toasting("Enter Message", "error")
-    return false
-  }else{
-    Toasting("Successfully send", "success")
+        Toasting("Successfully send", "success")
+        document.getElementsByName("name")[0].value = ""
+
+        document.getElementsByName("user_email")[0].value = ""
+        document.getElementsByName("message")[0].value = ""
+
+      }).catch((er) => {
+        console.log(er)
+      })
+    }
+
+
   }
-  
-  emailjs.sendForm("service_fkikud8","template_upt5x1s",e.target,"PePpFs6LL7DEydqGY").then((res)=>{
-    console.log(res)
-
-  }).catch((er)=>{
-    console.log(er)
-  })
-}
 
 
-const closing_popup=()=>{
-  setclose_popup(!close_popup)
-}
+  const closing_popup = () => {
+    setclose_popup(!close_popup)
+  }
 
-const logout=()=>{
-  setclose_popup(!close_popup)
-}
+  const logout = () => {
+    setclose_popup(!close_popup)
+  }
 
-const clear_logout=()=>{
-  dispatch(USER_LOGOUT())
-  navigate("/")
-}
+  const clear_logout = () => {
+    dispatch(USER_LOGOUT())
+    navigate("/")
+  }
 
   return (
     <>
@@ -222,10 +230,10 @@ const clear_logout=()=>{
 
               {/* heroic buttons */}
               <div className="heroic_buttons">
-                <button className="Hire_me">Hire me</button>
+                {/* <button className="Hire_me">Hire me</button> */}
                 &nbsp;
                 &nbsp;
-                <a className="Get_resume" href={require("../Images/heroic.jpg")} download>Get Resume</a>
+                <a className="Get_resume" href={require("../Doc/mani_resume (1).pdf")} download>Get Resume</a>
               </div>
 
             </div>
@@ -268,10 +276,10 @@ const clear_logout=()=>{
                 <li>Web Socket</li>
               </ul>
               <div className="heroic_buttons">
-                <button className="Hire_me_about">Hire me</button>
+                {/* <button className="Hire_me_about">Hire me</button> */}
                 &nbsp;
                 &nbsp;
-                <button className="Get_resume">Get Resume</button>
+                <a className="Get_resume" href={require("../Doc/mani_resume (1).pdf")} download>Get Resume</a>
               </div>
             </div>
           </div>
@@ -305,14 +313,14 @@ const clear_logout=()=>{
 
                   <p style={width > 768 ? null : { fontSize: "17px" }}>Secondary School Leaving Certificate at S.M.S.V.HSS in Karaikudi <span style={{ color: "#ff6347" }}>2012.</span></p>
                   <p style={width > 768 ? null : { fontSize: "17px" }}>Higher Secondary Course at Alagappa Matriculation School in karaikudi <span style={{ color: "#ff6347" }}>2012-2014.</span></p>
-                  <p style={width > 768 ? null : { fontSize: "17px" }}>Bachelor Of Civil Engineering in Anna University  <span style={{ color: "#ff6347" }}>2014-2018.</span></p>
-                  <p style={width > 768 ? null : { fontSize: "17px" }}>React JS, Express Js, Mysql, Node JS in Online Course <span style={{ color: "#ff6347" }}>2020-2023.</span></p>
+                  <p style={width > 768 ? null : { fontSize: "17px" }}>Bachelor Of Engineering in Anna University  <span style={{ color: "#ff6347" }}>2014-2018.</span></p>
+                  <p style={width > 768 ? null : { fontSize: "17px" }}>React JS, Express Js, Mysql, Node JS,Web Socket in Online Course <span style={{ color: "#ff6347" }}>2020-2023.</span></p>
                 </div>
 
                 {/* Work history content */}
                 <div>
                   <p style={width > 768 ? { fontWeight: "bold" } : { fontSize: "17px", fontWeight: "bold" }}>KDP TECH</p>
-                  <p style={width > 768 ? null : { fontSize: "17px" }}>FrontEnd and BackEnd in KDP Tech for <span style={{ color: "#ff6347" }}>1.5 year</span> Experience.</p>
+                  <p style={width > 768 ? null : { fontSize: "17px" }}>FrontEnd and BackEnd in KDP Tech for <span style={{ color: "#ff6347" }}>2 year</span> Experience.</p>
                   <p>&nbsp;&nbsp;- Developing Interactive <span style={width > 768 ? { color: "#ff6347" } : { fontSize: "17px", color: "#ff6347" }}>UI.</span></p>
                   <p style={width > 768 ? null : { fontSize: "17px" }}>&nbsp;&nbsp;- Developing Backend API with Database.</p>
                   <p style={width > 768 ? null : { fontSize: "17px" }}>&nbsp;&nbsp;- Redux State Management - Redux Persist, Thunk</p>
@@ -337,9 +345,9 @@ const clear_logout=()=>{
 
                 {/* Projects */}
                 <div>
-                  <p style={width > 768 ? null : { fontSize: "17px" }}>&nbsp;&nbsp;- Chat App &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span onClick={()=>navigate(`/Chat_Auth`)} className="boom" style={{ transition: "all 0.3s ease-in-out", color: "#ff6347", cursor: "pointer", position: "relative" }}>go to</span></p>
-                 
-                  <p style={width > 768 ? null : { fontSize: "17px" }}>&nbsp;&nbsp;- Redux To Do List.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span onClick={()=>navigate(`/To_Do`)} className="boom2" style={{ transition: "all 0.3s ease-in-out", color: "#ff6347", cursor: "pointer", position: "relative" }}>go to</span></p>
+                  <p style={width > 768 ? null : { fontSize: "17px" }}>&nbsp;&nbsp;- Chat App &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span onClick={() => navigate(`/Chat_Auth`)} className="boom" style={{ transition: "all 0.3s ease-in-out", color: "#ff6347", cursor: "pointer", position: "relative" }}>go to</span></p>
+
+                  <p style={width > 768 ? null : { fontSize: "17px" }}>&nbsp;&nbsp;- Redux To Do List.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span onClick={() => navigate(`/To_Do`)} className="boom2" style={{ transition: "all 0.3s ease-in-out", color: "#ff6347", cursor: "pointer", position: "relative" }}>go to</span></p>
                   <p style={width > 768 ? null : { fontSize: "17px" }}>&nbsp;&nbsp;- Personal Portfolio.</p>
                 </div>
 
@@ -388,27 +396,27 @@ const clear_logout=()=>{
                 <path fill="#F4D03F" d="M61.9,-36.5C74.7,-13.6,75.6,15.3,63.3,35.9C51,56.5,25.5,68.9,4.5,66.3C-16.6,63.7,-33.1,46.2,-41.3,27.9C-49.6,9.6,-49.4,-9.4,-41.2,-29.7C-32.9,-49.9,-16.4,-71.4,4.1,-73.7C24.6,-76.1,49.2,-59.3,61.9,-36.5Z" transform="translate(100 100)" />
               </svg>
             </div>
-{/* contact div */}
-         
-              <form  className="contact_blur_div" onSubmit={submit}>
-<span>Name</span>          
-<InputPort name={"name"} onChange={(e)=>setcontact({...contact,name:e.target.value})}/>
-<span>Email</span>     
-<InputPort name={"user_email"} onChange={(e)=>setcontact({...contact,email:e.target.value})}/>
-<span>Message</span>     
-<textarea className="input_contact" name={"message"} style={{height:"20%"}} onChange={(e)=>setcontact({...contact,mssg:e.target.value})}></textarea>
-<br/>
-<input className="Get_resume" type="submit" value="Send" />
-</form>
-      
+            {/* contact div */}
+
+            <form className="contact_blur_div" onSubmit={submit}>
+              <span>Name</span>
+              <InputPort name={"name"} onChange={(e) => setcontact({ ...contact, name: e.target.value })} />
+              <span>Email</span>
+              <InputPort name={"user_email"} onChange={(e) => setcontact({ ...contact, email: e.target.value })} />
+              <span>Message</span>
+              <textarea className="input_contact" name={"message"} style={{ height: "20%" }} onChange={(e) => setcontact({ ...contact, mssg: e.target.value })}></textarea>
+              <br />
+              <input className="Get_resume" type="submit" value="Send" />
+            </form>
+
           </div>
         </div>
         <br />
         <br />
         <br />
-        {close_popup?<Popup extra={<label id="yes_btn" name="Register" onClick={clear_logout} className='submit_admin_update'>Yes</label>} innerpopup={"popup_inner_login"} typeOf="LogOut" close={closing_popup}  />:null}
-     <Footer/>   
-     <ToastContainer hideProgressBar={true} />
+        {close_popup ? <Popup extra={<label id="yes_btn" name="Register" onClick={clear_logout} className='submit_admin_update'>Yes</label>} innerpopup={"popup_inner_login"} typeOf="LogOut" close={closing_popup} /> : null}
+        <Footer />
+        <ToastContainer hideProgressBar={true} />
       </div>
 
 

@@ -1,11 +1,19 @@
 import axios from "axios";
 import {Url} from "../Url/Url"
 
-export const Axios=async(url,payload,type=null)=>{
-  
+
+
+export const Axios=async(url,payload,type=null,token)=>{
+ 
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}` 
+  }
     let result;
 if(type===null){
-  await axios.post(Url+url, payload )
+  await axios.post(Url+url, payload,{
+    headers: headers
+  } )
   .then(res => {
    
     if(res.data.error){
@@ -26,7 +34,9 @@ if(type===null){
 
 }else{
   if(type==="get"){
-    await axios.get(Url+url )
+    await axios.get(Url+url ,{
+      headers: headers
+    })
     .then(res => {
      
       if(res.data.error){

@@ -3,13 +3,13 @@ import { store_chat_username } from './Chat_Reducer';
 import {store_rooms} from "./Chat_Reducer"
 import storage from 'redux-persist/es/storage';
 import { add_To_Do } from './To_Do_reducer';
-       
+import { Lib_User_Details } from './Lib_Reducer';       
 
 
 
 export const reducers_presist=combineReducers({
-    add_To_Do:add_To_Do
-    
+    add_To_Do:add_To_Do,
+    Lib_User_Details:Lib_User_Details
 //    test:test
 //    rootReducer:rootReducer
 })

@@ -4,16 +4,19 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 import Loading from './Components/Loading';
 import './index.css';
-const Login =React.lazy(()=>import("./Screens/Login"));
-const Register=React.lazy(()=>import('./Screens/Register'));
-const PortFolio=React.lazy(()=>import('./Screens/PortFolio'));
-const Admin=React.lazy(()=>import('./Screens/Admin'));
-const Admin_Create=React.lazy(()=>import('./Screens/Admin_Create'));
-const Admin_Edit=React.lazy(()=>import('./Screens/Admin_Edit'));
-const Chat_Auth=React.lazy(()=>import('./Screens/Chat_Auth'));
-const Chat_Room=React.lazy(()=>import('./Screens/Chat_Room'));
-const Chat_Area=React.lazy(()=>import('./Screens/Chat_Area'));
-const To_Do=React.lazy(()=>import('./Screens/To-Do'));
+const Login = React.lazy(() => import("./Screens/Login"));
+const Register = React.lazy(() => import('./Screens/Register'));
+const PortFolio = React.lazy(() => import('./Screens/PortFolio'));
+const Admin = React.lazy(() => import('./Screens/Admin'));
+const Admin_Create = React.lazy(() => import('./Screens/Admin_Create'));
+const Admin_Edit = React.lazy(() => import('./Screens/Admin_Edit'));
+const Chat_Auth = React.lazy(() => import('./Screens/Chat_Auth'));
+const Chat_Room = React.lazy(() => import('./Screens/Chat_Room'));
+const Chat_Area = React.lazy(() => import('./Screens/Chat_Area'));
+const To_Do = React.lazy(() => import('./Screens/To-Do'));
+const Lib_Login = React.lazy(() => import('./Screens/Lib_Login'));
+const Lib_Main = React.lazy(() => import('./Screens/Lib_Main'));
+const Lib_Admin = React.lazy(() => import('./Screens/Lib_Admin'));
 
 
 function App() {
@@ -25,27 +28,38 @@ function App() {
   return (
     <>
       <BrowserRouter>
-    
+
 
         <Routes>
-          
-          <Route path="/" element={<React.Suspense fallback={<Loading/>}><Login/></React.Suspense>} />
-          <Route path="/Register" element={<React.Suspense fallback={<Loading/>}><Register/></React.Suspense>} />
-          <Route path="/PortFolio" element={<React.Suspense fallback={<Loading/>}><PortFolio/></React.Suspense>} />
-          
-          <Route path="/Admin" element={<React.Suspense fallback={<Loading/>}><Admin/></React.Suspense>} >
-             <Route path="/Admin/" element={<Admin_Create />} />
-             <Route path="/Admin/Admin_Edit" element={<Admin_Edit />} />
-         
+
+          <Route path="/" element={<React.Suspense fallback={<Loading />}><Login /></React.Suspense>} />
+          <Route path="/Register" element={<React.Suspense fallback={<Loading />}><Register /></React.Suspense>} />
+          <Route path="/PortFolio" element={<React.Suspense fallback={<Loading />}><PortFolio /></React.Suspense>} />
+
+          <Route path="/Admin" element={<React.Suspense fallback={<Loading />}><Admin /></React.Suspense>} >
+            <Route path="/Admin/" element={<Admin_Create />} />
+            <Route path="/Admin/Admin_Edit" element={<Admin_Edit />} />
+
           </Route>
 
           {/* chat roots */}
-          <Route path="/Chat_Auth" element={<React.Suspense fallback={<Loading/>}><Chat_Auth/></React.Suspense>} />
-          <Route path="/Chat_Room" element={<React.Suspense fallback={<Loading/>}><Chat_Room/></React.Suspense>} />
-          <Route path="/Chat_Area" element={<React.Suspense fallback={<Loading/>}><Chat_Area/></React.Suspense>} />
+          <Route path="/Chat_Auth" element={<React.Suspense fallback={<Loading />}><Chat_Auth /></React.Suspense>} />
+          <Route path="/Chat_Room" element={<React.Suspense fallback={<Loading />}><Chat_Room /></React.Suspense>} />
+          <Route path="/Chat_Area" element={<React.Suspense fallback={<Loading />}><Chat_Area /></React.Suspense>} />
 
-{/* redux to do LIST */}
-          <Route path="/To_Do" element={<React.Suspense fallback={<Loading/>}><To_Do/></React.Suspense>} />
+          {/* redux to do LIST */}
+          <Route path="/To_Do" element={<React.Suspense fallback={<Loading />}><To_Do /></React.Suspense>} />
+
+
+          {/* book dictionary routes */}
+
+          <Route path="/Lib_Login" element={<React.Suspense fallback={<Loading />}><Lib_Login /></React.Suspense>} />
+          <Route path="/Lib_Main" element={<React.Suspense fallback={<Loading />}><Lib_Main /></React.Suspense>} />
+          <Route path="/Lib_Admin" element={<React.Suspense fallback={<Loading />}><Lib_Admin /></React.Suspense>} />
+
+
+
+
 
         </Routes>
       </BrowserRouter>
@@ -97,8 +111,8 @@ export default App;
 
 
 
- // Persons count
- // let persons=[1,2,3,4,5,6,7,8,9,10]
+// Persons count
+// let persons=[1,2,3,4,5,6,7,8,9,10]
 
 {/* <div  className='dash_dropdown_main1'>
 <div onClick={ShowDrop} className='dash_dropdown_main2'><i class="fas fa-users"></i>  <span className='dash_dropdown_value'>  {drop_value}</span> <i id='drop_close_arrow' class="fas fa-angle-down"></i></div>
@@ -111,4 +125,11 @@ export default App;
   </ul>
 </div>
 </div> */}
+
+
+// #F6BD60
+// #F7EDE2
+//#F5CAC3
+// #84A59D
+// #F28482
 

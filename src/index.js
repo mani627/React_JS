@@ -14,18 +14,24 @@ import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 import {user_detail} from './Redux/Reducer/user_detail';
 import {encryptTransform} from 'redux-persist-transform-encrypt'
 import localStorage from 'redux-persist/es/storage';
+
+
+
+
+
+
 const persistConfig={
   key:"main-root",
   storage:localStorage,
-  // transforms: [
-  //   encryptTransform({
-  //     secretKey: 'mani',
-  //     onError: function (error) {
-  //       console.log("redux-encrypt error  ",error);
-  //       // Handle the error.
-  //     },
-  //   }),
-  // ],  
+  transforms: [
+    encryptTransform({
+      secretKey: 'mani',
+      onError: function (error) {
+        console.log("redux-encrypt error  ",error);
+        // Handle the error.
+      },
+    }),
+  ],  
   blacklist:['hotelinfo','test','admin_edit_hotel']
   
 }
@@ -33,17 +39,12 @@ const persistConfig={
 // config rootreducer with persist
 const persistedReducer=persistReducer(persistConfig,rootReducer);
 
-
-
 const store2=createStore(persistedReducer,compose(applyMiddleware(thunk)));
-
 
 export const persistor=persistStore(store2)
 
 
-//const store=createStore(reducers_presist,applyMiddleware(thunk))
 
-//mport reportWebVitals from './reportWebVitals';
 
 
 
@@ -63,3 +64,35 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 //reportWebVitals();
+
+
+
+// import React from "react";
+// import "./App.css";
+
+// function App() {
+
+
+// const down =()=>{
+    
+// }
+
+//   return (
+//     <div style={{backgroundColor:"red",width:200}}>
+//     <input onClick={down}/>
+//     <span className="btm" style={{backgroundColor:"blue",display:"block"}}>
+//     <ul className="btm">
+//     <li>dddd</li>
+
+//     <li>dddd</li>
+//     <li>dddd</li><li>dddd</li>
+//     <li>dddd</li>
+//     <li>dddd</li>
+//     <li>dddd</li>
+//     </ul>
+//     </span>
+//     </div>
+//   );
+// }
+
+// export default App;

@@ -38,8 +38,8 @@ const Login = () => {
   const [hide_password, sethidepassword] = useState(true)
   const [userdetails, set_userdetails] = useState({
 
-    email: "",
-    pass: "",
+    email: "mani8754209@gmail.com",
+    pass: "Mani@1234",
 
   })
   let select_btn = document.getElementById('btn_id_login');
@@ -175,10 +175,10 @@ const Login = () => {
 
 
 
-          <Input typeOf="auth"name="email" onChange={(e) => OnchangeText(e)} icon={faUser} className_A='phone' placeholder="email" type="text" />
+          <Input typeOf="auth"name="email" onChange={(e) => OnchangeText(e)} icon={faUser} className_A='phone' placeholder="email" type="text" defaultValue={"mani8754209@gmail.com"} />
 
 
-          <Input typeOf="auth" name="pass" onChange={(e) => OnchangeText(e)} type={hide_password ? "password" : "text"} icon={!hide_password ? faEye : faEyeSlash} onClick={() => sethidepassword(!hide_password)} className_A='password' placeholder="pass" />
+          <Input defaultValue={"Mani@1234"} typeOf="auth" name="pass" onChange={(e) => OnchangeText(e)} type={hide_password ? "password" : "text"} icon={!hide_password ? faEye : faEyeSlash} onClick={() => sethidepassword(!hide_password)} className_A='password' placeholder="pass" />
 
 
           <Button id="btn_id_login" name="Login" className_A='btn' onClick={Submit} />
