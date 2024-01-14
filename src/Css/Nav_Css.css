@@ -8,7 +8,7 @@
 
   .nav_right {
     height: 8vh;
-    width: 40%;
+    width: 45%;
  
     align-self: center;
     margin-left: 5%;
@@ -110,12 +110,13 @@
   } */
 .nav_drop{
   /* height: 50vh; */
-  width: 30%;
+  width: 40%;
   background-color: #FBF8EE;
   position: absolute;
-  right: 18%;
+  right: 20%;
   top:100%;
   border-radius: 7px;
+
 display: none;
 padding: 3%;
 flex-direction: column;

@@ -5,7 +5,7 @@ const Button = ({ name, className_A, ...rest }) => {
     <div >
       <button id="s" className={className_A} {...rest}>
         {name}
-        {true? <div class="lds-ring"><div></div><div></div><div></div><div></div></div>:""}
+     
       </button>
       
     </div>

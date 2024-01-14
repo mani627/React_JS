@@ -7,6 +7,7 @@ import { Axios } from "../Axios/Axios";
 import Toasting from "../Components/Toast";
 import "../Css/Lib_Login.css";
 import useCheck_Local_Storage from "../CustomHook/CustomHook";
+import LoadingOverlay from "react-loading-overlay";
 
 function Lib_Admin() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function Lib_Admin() {
 
   //Thses custom hook to check login detail is there are not
   useCheck_Local_Storage();
-
+  const [isLoader, setIsLoader] = useState(false);
   const [Book_img, setBook_img] = React.useState([]);
   const [Book_img_files, setBook_img_files] = React.useState([]);
   const [inputs, setinputs] = useState({
@@ -82,6 +83,7 @@ function Lib_Admin() {
     if (inputs.name === "" || inputs.desc === "" || Book_img.length === 0) {
       Toasting("Enter Book Details", "error");
     } else {
+      setIsLoader(true)
       let formdata = new FormData();
       formdata.append("Book_Name", inputs.name);
       formdata.append("Book_Desc", inputs.desc);
@@ -96,7 +98,7 @@ function Lib_Admin() {
         null,
         redux_state.Lib_User_Details.data[1]
       );
-      console.log(result.data.error);
+      setIsLoader(false)
       if (result.data === "Already Exist") {
         Toasting("Name Already Exist", "error");
       } else if (
@@ -115,6 +117,7 @@ function Lib_Admin() {
   };
 
   return (
+    <LoadingOverlay active={isLoader} spinner text="Loading your content...">
     <div className="min-h-screen     flex  items-center flex-col">
       {/* header */}
       <div className=" w-[85vw] h-[10vh] max-md:h-[20vh]   mt-5    flex items-center  justify-center max-md:flex-col  ">
@@ -214,6 +217,7 @@ function Lib_Admin() {
       </div>
       <ToastContainer hideProgressBar={true} />
     </div>
+    </LoadingOverlay>
   );
 }
 

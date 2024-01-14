@@ -14,8 +14,11 @@ import { Axios } from "../Axios/Axios";
 import "../Css/Lib_Login.css";
 import useCheck_Local_Storage from "../CustomHook/CustomHook";
 import { DeleteAll_Lib } from "../Redux/Action/Lib";
+import LoadingOverlay from "react-loading-overlay";
+import { Overlay } from "antd/lib/popconfirm/PurePanel";
 
 function Lib_Main() {
+  const [isLoader, setIsLoader] = useState(false);
   const redux_state = useSelector((state) => state);
   const [book_list, setbook_list] = useState([]);
   const [fav_books, setfav_books] = useState([]);
@@ -36,6 +39,7 @@ function Lib_Main() {
 
   useEffect(() => {
     (async () => {
+      setIsLoader(true)
       let result = await Axios(
         `/get_book?skip=${pagevisited}&limit=10`,
         null,
@@ -60,13 +64,14 @@ function Lib_Main() {
         "get",
         redux_state.Lib_User_Details.data[1]
       );
-
+      setIsLoader(false)
       setTotal_Book_Count(result3?.data?.mssg);
     })();
   }, [trigger]);
 
   // add remove fav books
   const Add_Remove_Fav = async (type, book) => {
+    setIsLoader(true)
     if (type === "add") {
       let result = await Axios(
         "/Add_Fav",
@@ -84,6 +89,7 @@ function Lib_Main() {
       );
       settrigger(!trigger);
     }
+    setIsLoader(false)
   };
 
   let data = book_list.filter((e) => {
@@ -123,14 +129,15 @@ function Lib_Main() {
   );
 
   return (
-    <div className="min-h-screen  tracking-[.25em]   text-lg  sm:bg-white  flex  items-center flex-col mt-10 text-ellipsis">
+    <LoadingOverlay active={isLoader} spinner text="Loading your content...">
+    <div className="min-h-screen  tracking-[.25em]   text-lg  sm:bg-white  flex  items-center flex-col pt-10 text-ellipsis">
       BOOKS
       {/* header */}
-      <div className=" w-[85vw] h-[10vh] max-md:h-[20vh]  flex items-center justify-between max-md:flex-col max-md: ">
+      <div className=" w-[85vw] h-[10vh] max-md:h-[25vh]  flex items-center justify-between max-md:flex-col  ">
         {/* Search bar */}
         <input
           onChange={(e) => setsearch_value(e.target.value)}
-          className=" tracking-[.20em] w-[20%] h-[60%] max-md:h-[35%] max-md:w-[100%] rounded-md pl-2 bg-[#f7ede2] max-md:mt-2"
+          className=" tracking-[.20em] w-[20%] h-[60%] max-md:h-[30%] max-md:w-[100%] rounded-md pl-2 bg-[#f7ede2] max-md:mt-2"
           placeholder="search"
         />
 
@@ -187,7 +194,7 @@ function Lib_Main() {
       </div>
       <div className=" w-[85vw] min-h-[150vh]   mt-10 flex flex-wrap justify-around max-md:flex-col">
         {/* card */}
-        {data.map((e, i) => {
+        {data.length>0? data.map((e, i) => {
           return (
             <div className="w-[25vw] h-[65vh] bg-white shadow-2xl shadow-white-500/50 rounded-xl mt-5 relative flex flex-col items-center max-md:w-[100%]">
               {/* card header */}
@@ -240,7 +247,7 @@ function Lib_Main() {
               </button>
             </div>
           );
-        })}
+        }):<span>No Data... Add Books</span>}
       </div>
       {/* Pgination */}
       <div className=" mt-10 w-[25%] h-[10vh] flex items-center ">
@@ -262,6 +269,7 @@ function Lib_Main() {
         />
       </div>
     </div>
+    </LoadingOverlay>
   );
 }
 
