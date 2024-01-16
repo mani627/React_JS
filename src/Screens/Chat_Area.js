@@ -10,7 +10,7 @@ import Toasting from '../Components/Toast';
 // https://chat2-etwf.onrender.com
 // http://localhost:8080
 
-const socket=io.connect("https://chat2-etwf.onrender.com")
+const socket=io.connect("https://chat-book-api.onrender.com")
 
 
 function Chat_Area() {
@@ -55,6 +55,7 @@ useEffect(()=>{
   
   
     await socket.on("toall",(data)=>{
+   
         document.getElementsByClassName("typing_chat")[0].style.visibility="hidden"
     document.getElementsByClassName("typing_chat")[0].style.bottom="8%"
     document.getElementsByClassName("typing_chat")[0].innerHTML=""
