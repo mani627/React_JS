@@ -229,7 +229,8 @@ function Lib_Main() {
                   />
                 )}
               </div>
-
+{console.log("check",e.Image)
+}
               {/* card bode */}
               <img
                 loading="lazy"
@@ -237,7 +238,12 @@ function Lib_Main() {
                 className="h-[65%] w-[97%] bg-cover  mt-6  "
                 src={e.Image.split(",")[0]}
                 alt=""
+                onError={(e) => {
+                  console.log({e})
+                  e.target.src = (i>3||i===0)?`/book1.jpg`  : `/book${i}.jpg`;  // Provide your fallback image path here
+                }}
               />
+             
               <div style={{ position: "absolute" }} id="admin_img_spinner_div">
                 <Spin indicator={antIcon} />
               </div>

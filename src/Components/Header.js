@@ -106,7 +106,7 @@ function Header({ colors, logout }) {
         " height 0.4s ease-in-out";
       document.getElementsByClassName("nav_drop2")[0].style.display =
         "inline-flex";
-      document.getElementsByClassName("nav_drop2")[0].style.height = "20%";
+      document.getElementsByClassName("nav_drop2")[0].style.height = "25%";
     } else {
        document.getElementsByClassName("port_profile")[0].style.transform="none"
     
@@ -201,13 +201,22 @@ function Header({ colors, logout }) {
             ref={wrapperRef}
             className={width < 768 ? "nav_drop2" : "nav_drop"}
           >
-            <span
+             <span
               onClick={() => {
-                navigate(`/Lib_Login`);
+                window.open('https://next-stripe-red.vercel.app/', '_blank', 'noopener,noreferrer');
               }}
               style={{ cursor: "pointer",fontSize:"0.8rem" }}
             >
-              Rest API/Express
+             - Next JS Payment Gateway
+            </span>
+            <span
+              onClick={() => {
+                window.open('/Lib_Login', '_blank')
+               
+              }}
+              style={{ cursor: "pointer",fontSize:"0.8rem" }}
+            >
+             - Rest API/Express
             </span>
             <span
               onClick={() => {
@@ -215,7 +224,7 @@ function Header({ colors, logout }) {
               }}
               style={{ cursor: "pointer",fontSize:"0.8rem" }}
             >
-              Chat
+             - Chat App
             </span>
             <span
               onClick={() => {
@@ -223,7 +232,7 @@ function Header({ colors, logout }) {
               }}
               style={{ cursor: "pointer",fontSize:"0.8rem" }}
             >
-              Redux ToDo List
+            -  Redux ToDo List
             </span>
           </div>
 

@@ -301,7 +301,7 @@ color: #282828
     width: 55%;
     height: 85%;
     background-color: #16a085;
-    background-image:  url("../Images/dash_story_img.jpg");
+  
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size:cover;
@@ -313,7 +313,7 @@ color: #282828
     width: 55%;
     height: 85%;
     background-color: #16a085;
-    background-image:  url("../Images/dash_story_img2.jpg");
+  
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size:cover;
@@ -325,7 +325,7 @@ color: #282828
     width: 55%;
     height: 85%;
     background-color: #16a085;
-    background-image:  url("../Images/dash_story_img3.jpg");
+  
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size:cover;

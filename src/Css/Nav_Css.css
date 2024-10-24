@@ -128,7 +128,7 @@ transition: all 0.2s ease-in-out;
   padding: 2%;
 }
 .nav_drop2{
-  height: 0%;
+  height: 10px;
   width: 80%;
   background-color: #FBF8EE;
   /* position: absolute; */

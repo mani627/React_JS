@@ -84,7 +84,7 @@ line-height: 50%;
 }
 
 .about_me_content{
-    height: 110%;
+    height: 105vh;
     width: 75%;
     background-color:tomato;
     display: flex;
@@ -316,7 +316,7 @@ transition: transform 0.5s
 }
 .about_me_para{
     font-size: 15px;
-  
+  font-weight: 300;
 }
 .Get_resume{
     background-color:#ff6347;
@@ -528,6 +528,8 @@ transition: transform 0.5s
 }
 .Resume_content_tab_content {
     width: 100%;
+    padding: 1%;
+    margin-top: 1%;
 }
 .Resume_main {
     height: auto;

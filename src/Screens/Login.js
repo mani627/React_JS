@@ -1,18 +1,17 @@
-import { faEye, faUser, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faUser } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AuthContainer from "../Components/AuthContainer";
+import Button from "../Components/Button";
 import Input from '../Components/Input';
+import Popup from "../Components/Popup";
+import Toasting from '../Components/Toast';
 import "../Css/Login_Css.css";
 import "../Images/Login_right.jpg";
-import Button from "../Components/Button";
-import AuthContainer from "../Components/AuthContainer";
-import Popup from "../Components/Popup";
-import { Axios } from "../Axios/Axios"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Toasting from '../Components/Toast';
-import { useDispatch, useSelector } from "react-redux";
-import { store_user_details } from "../Redux/Action/Actions_Hotel";
+import ModalPopup from "../Components/Modalpopup";
 
 
 // export const faEye: IconDefinition;
@@ -25,13 +24,15 @@ import { store_user_details } from "../Redux/Action/Actions_Hotel";
 // export const faF: IconDefinition;
 
 const Login = () => {
-  
-  const dispatch=useDispatch();
+
+  const dispatch = useDispatch();
 
   // get redux state to check already login or not
-  let redux_state=useSelector((state)=>state);
+  let redux_state = useSelector((state) => state);
 
+  useEffect(() => {
 
+  },[])
 
 
   const [showPopup, hidePopup] = useState(false);
@@ -44,19 +45,14 @@ const Login = () => {
   })
   let select_btn = document.getElementById('btn_id_login');
 
-  
+
   const navigate = useNavigate()
- 
+
 
 
   useEffect(() => {
 
-    // check already logged in or not
 
-    // if(redux_state.sample.login_details){
-
-    //    return navigate("/Dashboard") 
-    //   }
 
     let one = setTimeout(() => {
 
@@ -91,7 +87,7 @@ const Login = () => {
 
   }, [])
 
-  
+
 
   const close_popup = () => {
     hidePopup(true)
@@ -107,11 +103,11 @@ const Login = () => {
 
     })
   }
- 
+
 
 
   const Submit = async () => {
- 
+
     let email_reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     let result_email = email_reg.test(userdetails.email);
 
@@ -125,11 +121,11 @@ const Login = () => {
       Toasting("Enter Valid", "error")
     } else if (userdetails.pass === "") {
       Toasting("Enter Password", "error")
-    } 
-    else if(!result_pass){
+    }
+    else if (!result_pass) {
       Toasting("PassWord Not Strong", "error")
     }
-    
+
     else {
       navigate("/PortFolio")
       //    //start loading in button
@@ -155,7 +151,7 @@ const Login = () => {
       // } else if (result.data === "Email dose not exist") {
       //   Toasting("Email Not Exist", "error")
       // } else if (result.data.message === "successfully login") {
-      
+
       //   // localStorage.setItem("details", [result.data.token,result.data.details[0],result.data.details[2].data[0]]);
       //   dispatch( store_user_details([result.data.token,result.data.details[0],result.data.details[2].data[0]]))
       //   navigate("/Dashboard")
@@ -164,9 +160,10 @@ const Login = () => {
     }
 
   }
- 
+
   return (
     <AuthContainer>
+      <ModalPopup/>
       <div id="innerContainer">
 
 
@@ -175,7 +172,7 @@ const Login = () => {
 
 
 
-          <Input typeOf="auth"name="email" onChange={(e) => OnchangeText(e)} icon={faUser} className_A='phone' placeholder="email" type="text" defaultValue={"mani8754209@gmail.com"} />
+          <Input typeOf="auth" name="email" onChange={(e) => OnchangeText(e)} icon={faUser} className_A='phone' placeholder="email" type="text" defaultValue={"mani8754209@gmail.com"} />
 
 
           <Input defaultValue={"Mani@1234"} typeOf="auth" name="pass" onChange={(e) => OnchangeText(e)} type={hide_password ? "password" : "text"} icon={!hide_password ? faEye : faEyeSlash} onClick={() => sethidepassword(!hide_password)} className_A='password' placeholder="pass" />
@@ -195,7 +192,7 @@ const Login = () => {
       </div>
 
       {showPopup ? <Popup innerpopup={"popup_inner_login"} typeOf="popuplogin" close={() => hidePopup(false)} /> : null}
-      <ToastContainer  hideProgressBar={true} />
+      <ToastContainer hideProgressBar={true} />
     </AuthContainer >
   );
 }

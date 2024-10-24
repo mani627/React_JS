@@ -25,8 +25,6 @@ function PortFolio() {
   let url = new URL(window.location.href);
   url.searchParams.set("name", "mani");
 
-
-
   const dispatch = useDispatch();
   let redux_state = useSelector((state) => state);
   // let loginDetails = redux_state.sample.login_details;
@@ -49,11 +47,12 @@ function PortFolio() {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
+ 
+
   const updateDimensions = () => {
     const width = window.innerWidth;
     setWindowWidth(width);
   };
-
 
   let tab = document.querySelectorAll(
     ".tab_main_container .Resume_content_tab p"
@@ -80,6 +79,13 @@ function PortFolio() {
 
       if (i === 3) {
         setTimeout(() => {
+          let boom = document.getElementsByClassName("boom0");
+
+          boom[0].style.transition = "top 0.2s ease-in-out";
+          boom[0].style.top = "-10px";
+        }, 300);
+
+        setTimeout(() => {
           let boom = document.getElementsByClassName("boom");
 
           boom[0].style.transition = "top 0.2s ease-in-out";
@@ -92,7 +98,6 @@ function PortFolio() {
           boom2[0].style.transition = "top 0.2s ease-in-out";
           boom2[0].style.top = "-10px";
         }, 1000);
-
 
         setTimeout(() => {
           let boom3 = document.getElementsByClassName("boom3");
@@ -120,7 +125,6 @@ function PortFolio() {
           boom3[0].style.transition = "top 0.2s ease-in-out";
           boom3[0].style.top = "0px";
         }, 2500);
-
       }
       // t.classList.remove("active_tab")
       // tab[i].classList.remove("active_tab")
@@ -135,7 +139,6 @@ function PortFolio() {
       document.getElementsByName("user_email")[0].value
     );
 
-    
     e.preventDefault();
     if (document.getElementsByName("message")[0].value === "") {
       Toasting("Enter Name", "error");
@@ -182,10 +185,6 @@ function PortFolio() {
     navigate("/");
   };
 
-
- 
-   
-
   return (
     <>
       <div className="port_main_div">
@@ -226,7 +225,7 @@ function PortFolio() {
                 &nbsp; &nbsp;
                 <a
                   className="Get_resume"
-                  href={require("../Doc/mani_resume (1).pdf")}
+                  href={require("../Doc/ManiUP.pdf")}
                   download
                 >
                   Get Resume
@@ -269,26 +268,18 @@ function PortFolio() {
             {/* about me desc */}
             <div className="about_me_content_right">
               <p className="about_me_para">
-                As a skilled and passionate Full Stack Developer, I specialize
-                in building robust and scalable web applications using the MERN
-                (MongoDB, Express.js, React, Node.js) stack. With proficiency in
-                React and Redux, I create dynamic and responsive user
-                interfaces, while my backend expertise in Node.js ensures
-                efficient server-side functionality. I have hands-on experience
-                with MongoDB for database management, and I leverage Git for
-                version control. Additionally, I excel in implementing real-time
-                features using WebSockets. Committed to delivering high-quality
-                code, I thrive in collaborative environments and stay updated on
-                the latest industry trends to continuously enhance my skills.
+              I am a dedicated Full-Stack Developer with over 3 years of experience, proficient in building scalable and efficient applications. My tech stack includes React, Next.js, MongoDB, Kafka, TypeScript, Redux, Node.js, and expertise in real-time communication using socket protocols. I have hands-on experience with Docker for containerized deployments and Git for version control, applying Agile methodologies to ensure continuous delivery and improvement.
+
+I specialize in creating responsive, dynamic web applications with a focus on performance and scalability, leveraging real-time data streaming through Kafka and socket protocols. My ability to integrate microservices and manage end-to-end development pipelines sets me apart in delivering reliable, robust, and interactive software solutions.
               </p>
-              <span style={{ fontWeight: "bold" }}>
+              <span style={{ fontWeight: "bold",fontWeight:600 }}>
                 Here are the Few Highlights
               </span>
               <ul id="highlights">
                 <li>React</li>
                 <li>Redux for state management (Redux persist)</li>
-                <li>Git (GitHub,Bitbucket)</li>
-                <li>Jira (Project Management)</li>
+                <li>Docker</li>
+                <li>Kafka Messaging Broker</li>
                 <li>
                   Node JS (ExpressJS, PassportJS, Multer, Nodemailer,Mongoose
                   ODM)
@@ -302,7 +293,7 @@ function PortFolio() {
                 &nbsp; &nbsp;
                 <a
                   className="Get_resume"
-                  href={require("../Doc/mani_resume (1).pdf")}
+                  href={require("../Doc/ManiUP.pdf")}
                   download
                 >
                   Get Resume
@@ -313,6 +304,7 @@ function PortFolio() {
         </div>
 
         {/* Resume */}
+        <br/>
         <div className="Resume_main" id="resume">
           <div className="Resume_header">
             <p className="about_me_title">Resume</p>
@@ -377,7 +369,7 @@ function PortFolio() {
                           : { fontSize: "17px", fontWeight: "bold" }
                       }
                     >
-                     1. KDP TECH
+                      1. KDP TECH
                     </p>
                     <p style={width > 768 ? null : { fontSize: "17px" }}>
                       FrontEnd and BackEnd in KDP Tech for{" "}
@@ -416,11 +408,11 @@ function PortFolio() {
                           : { fontSize: "17px", fontWeight: "bold" }
                       }
                     >
-                     2. MITRAH SOFT
+                      2. MITRAH SOFT
                     </p>
                     <p style={width > 768 ? null : { fontSize: "17px" }}>
                       FrontEnd and BackEnd in Mitrah Soft Tech for{" "}
-                      <span style={{ color: "#ff6347" }}>0.5 year</span>{" "}
+                      <span style={{ color: "#ff6347" }}>1.5 year</span>{" "}
                       Experience.
                     </p>
                     <p>
@@ -436,14 +428,15 @@ function PortFolio() {
                       </span>
                     </p>
                     <p style={width > 768 ? null : { fontSize: "17px" }}>
-                      &nbsp;&nbsp;- Developing Backend API with MongoDB Database.
+                      &nbsp;&nbsp;- Developing Backend API with MongoDB
+                      Database and Dockerization.
                     </p>
                     <p style={width > 768 ? null : { fontSize: "17px" }}>
                       &nbsp;&nbsp;- Redux State Management - Redux Persist,
                       Thunk
                     </p>
                     <p style={width > 768 ? null : { fontSize: "17px" }}>
-                      &nbsp;&nbsp;- Optimizing Code Both frontend and backend
+                      &nbsp;&nbsp;- Worked Kafka and Payment Gateway
                     </p>
                     <p style={width > 768 ? null : { fontSize: "17px" }}>
                       &nbsp;&nbsp;- Web Socket (Socket.IO library)
@@ -508,7 +501,7 @@ function PortFolio() {
                     ></meter>
                   </div>
                   <div style={width > 768 ? null : { fontSize: "17px" }}>
-                    HTML{" "}
+                    Kafka{" "}
                     <meter
                       style={width > 768 ? null : { width: "99%" }}
                       value="9"
@@ -517,7 +510,7 @@ function PortFolio() {
                     ></meter>
                   </div>
                   <div style={width > 768 ? null : { fontSize: "17px" }}>
-                    CSS{" "}
+                    NEXT JS{" "}
                     <meter
                       style={width > 768 ? null : { width: "99%" }}
                       value="9"
@@ -552,15 +545,46 @@ function PortFolio() {
                       max="10"
                     ></meter>
                   </div>
+                  <div style={width > 768 ? null : { fontSize: "17px" }}>
+                    Docker{" "}
+                    <meter
+                      style={width > 768 ? null : { width: "99%" }}
+                      value="9"
+                      min="0"
+                      max="10"
+                    ></meter>
+                  </div>
                 </div>
 
                 {/* Projects */}
                 <div>
-                <p style={width > 768 ? null : { fontSize: "17px" }}>
+                  <p style={width > 768 ? null : { fontSize: "17px" }}>
+                    &nbsp;&nbsp;- Next Js Payment Gateway
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span
+                      onClick={() =>
+                        window.open(
+                          "https://next-stripe-red.vercel.app/",
+                          "_blank",
+                          "noopener,noreferrer"
+                        )
+                      }
+                      className="boom0"
+                      style={{
+                        transition: "all 0.3s ease-in-out",
+                        color: "#ff6347",
+                        cursor: "pointer",
+                        position: "relative",
+                      }}
+                    >
+                      go to
+                    </span>
+                  </p>
+                  <p style={width > 768 ? null : { fontSize: "17px" }}>
                     &nbsp;&nbsp;- Book Library (RestFul API)
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span
-                      onClick={() => navigate(`/Lib_Login`)}
+                      onClick={() => window.open('/Lib_Login', '_blank')}
                       className="boom"
                       style={{
                         transition: "all 0.3s ease-in-out",
